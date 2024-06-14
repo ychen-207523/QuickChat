@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
-public class ConnectionTests {
+public class ConnectionTest {
     private Connection connection;
 
     @Before
