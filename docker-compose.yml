@@ -6,11 +6,13 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/quickchat
-      - SPRING_DATASOURCE_USERNAME=dev
-      - SPRING_DATASOURCE_PASSWORD=dev@123
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/quickchat
+      SPRING_DATASOURCE_USERNAME: dev
+      SPRING_DATASOURCE_PASSWORD: dev@123
     depends_on:
       - db
+    networks:
+      - quickchat-network
 
   db:
     image: postgres:13
@@ -22,6 +24,11 @@ services:
       - "5432:5432"
     volumes:
       - db-data:/var/lib/postgresql/data
+    networks:
+      - quickchat-network
 
 volumes:
   db-data:
+
+networks:
+  quickchat-network:
