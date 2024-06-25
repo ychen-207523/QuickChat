@@ -1,5 +1,4 @@
-## Plan on 6/22 and later
+## Plan on 6/24 and later
 
-1. Try to separate dev environment and deployment environment 
-2. Update the database
-3. Improve the configuration and tests
+1. Add authorities class 
+2. Work on issue tab and new branch
