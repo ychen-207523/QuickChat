@@ -5,7 +5,8 @@ CREATE TABLE users (
                        id SERIAL PRIMARY KEY,
                        username VARCHAR(50) UNIQUE NOT NULL,
                        email VARCHAR(50) UNIQUE NOT NULL,
-                       password VARCHAR(100) NOT NULL
+                       password VARCHAR(100) NOT NULL,
+                       enabled BOOLEAN NOT NULL
 );
 
 CREATE TABLE authorities (
@@ -15,5 +16,5 @@ CREATE TABLE authorities (
                              FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE
 );
 
-INSERT INTO users (username, email, password) VALUES ('user', 'user@example.com', 'password');
+INSERT INTO users (username, email, password, enabled) VALUES ('user', 'user@example.com', '$2a$10$DowJonesIndexEncodedPassword', true);
 INSERT INTO authorities (username, authority) VALUES ('user', 'ROLE_USER');
