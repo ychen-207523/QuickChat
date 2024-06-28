@@ -23,7 +23,7 @@ public class UserRepositoryTest {
     @Test
     public void whenFindByUsername_thenReturnUser() {
         // Given
-        User alex = new User("JohnDoe", "Jdoe@example.com", "password@123");
+        User alex = new User("JohnDoe", "Jdoe@example.com", "password@123", true);
         entityManager.persist(alex);
         entityManager.flush();
 
