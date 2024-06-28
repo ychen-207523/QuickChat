@@ -1,28 +1,19 @@
--- Drop existing tables
-DROP TABLE IF EXISTS authorities;
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS authorities CASCADE;
 
--- Create users table
-CREATE TABLE IF NOT EXISTS users (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    enabled BOOLEAN NOT NULL DEFAULT TRUE
-    );
+CREATE TABLE users (
+                       id SERIAL PRIMARY KEY,
+                       username VARCHAR(50) UNIQUE NOT NULL,
+                       email VARCHAR(50) UNIQUE NOT NULL,
+                       password VARCHAR(100) NOT NULL
+);
 
--- Create authorities table
-CREATE TABLE IF NOT EXISTS authorities (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(50) NOT NULL,
-    authority VARCHAR(50) NOT NULL,
-    CONSTRAINT fk_username FOREIGN KEY(username) REFERENCES users(username)
-    );
+CREATE TABLE authorities (
+                             id SERIAL PRIMARY KEY,
+                             username VARCHAR(50) NOT NULL,
+                             authority VARCHAR(50) NOT NULL,
+                             FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE
+);
 
--- Insert a sample user
-INSERT INTO users (username, email, password, enabled) VALUES ('user', 'user@example.com', 'password', true)
-    ON CONFLICT (username) DO NOTHING;
-
--- Insert a sample authority
-INSERT INTO authorities (username, authority) VALUES ('user', 'ROLE_USER')
-    ON CONFLICT (username, authority) DO NOTHING;
+INSERT INTO users (username, email, password) VALUES ('user', 'user@example.com', 'password');
+INSERT INTO authorities (username, authority) VALUES ('user', 'ROLE_USER');
