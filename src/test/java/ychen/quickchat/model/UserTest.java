@@ -11,7 +11,7 @@ public class UserTest {
 
     @BeforeEach
     public void setup() {
-        user = new User("johndoe", "john.doe@example.com", "Test@123");
+        user = new User("johndoe", "john.doe@example.com", "Test@123", true);
     }
 
     @Test
@@ -39,8 +39,16 @@ public class UserTest {
     }
 
     @Test
+    public void testGetAndSetEnabled() {
+        user.setEnabled(false);
+        assertFalse(user.isEnabled());
+        user.setEnabled(true);
+        assertTrue(user.isEnabled());
+    }
+
+    @Test
     public void testToString() {
-        String expected = "User{id=1, username='johndoe', email='john.doe@example.com', password='Test@123'}";
+        String expected = "User{id=1, username='johndoe', email='john.doe@example.com', password='Test@123', enabled=true}";
         user.setId(1L);
         assertEquals(expected, user.toString());
     }
