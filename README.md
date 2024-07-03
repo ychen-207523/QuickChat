@@ -1,4 +1,3 @@
-## Plan on 6/24 and later
+## Plan on 7/2 and later
 
-1. Add authorities class 
-2. Work on issue tab and new branch
+1. Start working on frontend
