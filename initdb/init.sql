@@ -15,6 +15,3 @@ CREATE TABLE authorities (
                              authority VARCHAR(50) NOT NULL,
                              FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE
 );
-
-INSERT INTO users (username, email, password, enabled) VALUES ('user', 'user@example.com', '$2a$10$DowJonesIndexEncodedPassword', true);
-INSERT INTO authorities (username, authority) VALUES ('user', 'ROLE_USER');
