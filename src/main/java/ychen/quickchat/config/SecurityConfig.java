@@ -29,11 +29,11 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/public/**").permitAll()
                         .requestMatchers("/api/user/**").hasRole("USER")
-                        .requestMatchers("/user").authenticated()
+                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/user", true)
+                        .defaultSuccessUrl("/home", true)
                         .permitAll())
                 .logout(logout -> logout
                         .logoutUrl("/logout")
