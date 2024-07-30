@@ -27,13 +27,13 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/public/**", "/signup", "/signup.html", "/css/**", "/js/**", "/login").permitAll()
+                        .requestMatchers("/signup", "/signup.html", "/css/**", "/js/**", "/login", "/login.html", "/api/public/**").permitAll()
                         .requestMatchers("/api/user/**").hasRole("USER")
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/home", true)
+                        .defaultSuccessUrl("/profile", true)
                         .permitAll())
                 .logout(logout -> logout
                         .logoutUrl("/logout")
