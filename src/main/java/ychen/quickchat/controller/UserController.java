@@ -33,7 +33,8 @@ public class UserController {
 
     @PostMapping("/signup")
     public ResponseEntity<String> signup(@RequestBody User user) {
-        userService.signupUser(user.getUsername(), user.getPassword());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userService.save(user);
         return ResponseEntity.ok("User registered successfully");
     }
 }
