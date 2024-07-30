@@ -75,7 +75,7 @@ public class SecurityConfigTest {
     public void shouldPerformUserLogin() throws Exception {
         mockMvc.perform(formLogin().user("user").password("password"))
                 .andExpect(status().isFound())
-                .andExpect(redirectedUrl("/home")); // Check if it redirects to the expected URL
+                .andExpect(redirectedUrl("/profile"));
     }
 
     @Test
