@@ -26,4 +26,8 @@ public class UserService {
         user.setEnabled(true);
         return userRepository.save(user);
     }
+
+    public User save(User user) {
+        return userRepository.save(user);
+    }
 }
