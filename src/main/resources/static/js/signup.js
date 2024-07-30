@@ -1,6 +1,5 @@
-document.getElementById('signup-form').addEventListener('submit', async (event) => {
-    event.preventDefault();
-
+document.getElementById('signupForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
@@ -16,6 +15,6 @@ document.getElementById('signup-form').addEventListener('submit', async (event) 
         alert('Signup successful!');
         window.location.href = '/login';
     } else {
-        alert('Signup failed. Please try again.');
+        alert('Signup failed');
     }
 });
