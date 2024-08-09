@@ -30,11 +30,4 @@ public class UserController {
     public ResponseEntity<String> testEndpoint() {
         return ResponseEntity.ok("User test endpoint reached");
     }
-
-    @PostMapping("/signup")
-    public ResponseEntity<String> signup(@RequestBody User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userService.save(user);
-        return ResponseEntity.ok("User registered successfully");
-    }
 }
